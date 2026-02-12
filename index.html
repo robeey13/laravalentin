@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Lara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <section class="intro" id="intro">
+    <div class="intro-content">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <span class="envelope-heart">❤️</span>
+        </div>
+      </div>
+      <p class="intro-text">levele érkezett...</p>
+    </div>
+  </section>
+
+  <section class="letter-section" id="letterSection">
+    <div class="letter-container">
+      <div class="letter">
+        <p class="letter-date">2026 február 14.</p>
+        <h1 class="title">Babs,</h1>
+        <div class="message">
+          <p>már megint itt van ez a fránya valentin nap. <br> Minden évben várom, azért, hogy megköszönhessem, hogy vagy nekem.</p>
+          <p>El sem tudom mondani, mennyire jól esik, hogy most a köztünk lévő szerelmet ünnepelhetem.</p>
+          <p>Mindig megtudsz nevettetni, szószerint rajongok érted.</p>
+          <p>Nagyon szeretem a közös kalandjainkat, amiket nap mint nap teszünk. Köszönöm, tényleg.</p>
+          <p>Nem is akarok arra gondolni, hol lennék nélküled, hisz minden napomat beragyogod.</p>
+          <p>Ha párszor nem is vagyunk jóba, azután is ugyanúgy szeretlek, hiszen ez a szeretet feléd, szerintem sosem fog elmúlni.</p>
+          <p>Örülök, hogy a mai napig az az aranyos, szép, önzetlen lány vagy, aki azon a bizonyos márciusi éjszakán láttam, és akivel egyből szerelembe estem.</p>
+          <p>Szavakkal leírhatatlan, így csak köszönök minden. Remélem ez a kis (nagynak tervezett) ajándék is tetszik, és örülsz a virágoknak.</p>
+          <p class="highlight">Szeretlek. De úgy, nagyon.</p>
+        </div>
+        <div class="signature">
+          <p>Szeretettel, Robi.</p>
+          <p class="signature-heart">♥</p>
+        </div>
+        <span class="secret-trigger" id="secretBtn" title=".">.</span>
+      </div>
+    </div>
+
+
+    <div class="secret-overlay" id="secretOverlay">
+      <div class="secret-modal">
+        <div class="secret-hearts" id="secretHearts"></div>
+        <h2 class="secret-title">ÜGYEEES :)</h2>
+        <p class="secret-message">el akartam ezt ide rejteni...</p>
+        <p class="secret-message secret-main">Akartam egy nyugodt helyet találni, hogy a te vagy a legjobb dolog ami velem történhetett valaha.</p>
+        <p class="secret-message secret-small">shsss... - most is nagyon szép vagy</p>
+        <button class="secret-close" id="secretClose">bezárás</button>
+      </div>
+    </div>
+
+
+    <div class="slider-container">
+      <p class="slider-label">kedvenc képeim együtt és rólad</p>
+      <div class="slider">
+        <div class="slider-track" id="sliderTrack">
+          <div class="slide">
+            <img src="1.jpg" alt="Memory 1">
+            <p class="slide-caption">ahh annyira imádtam Zakopanet veled</p>
+          </div>
+          <div class="slide">
+            <img src="2.jpg" alt="Memory 2">
+            <p class="slide-caption">annyira dögös vagy ezen a képen</p>
+          </div>
+          <div class="slide">
+            <img src="3.jpg" alt="Memory 3">
+            <p class="slide-caption">cuki a mosolyod</p>
+          </div>
+          <div class="slide">
+            <img src="4.jpg" alt="Memory 4">
+            <p class="slide-caption">bárcsak visszamehetnénk</p>
+          </div>
+          <div class="slide">
+            <img src="5.jpg" alt="Memory 5">
+            <p class="slide-caption">csak mi ketten</p>
+          </div>
+        </div>
+        <button class="slider-btn slider-btn-prev" id="sliderPrev" aria-label="Previous">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-btn slider-btn-next" id="sliderNext" aria-label="Next">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+
+    <div class="things-container">
+      <p class="things-label">amikből nem tud elegem lenni</p>
+      <ul class="things-list">
+        <li>a nevetésedből</li>
+        <li>amikor hozzámbújsz</li>
+        <li>a közös tiktokozásokból</li>
+        <li>amikor megcsikizel</li>
+        <li>amikor zavarba jössz, és nem tudsz mit mondani</li>
+        <li>de amúgy meg, semmiből</li>
+      </ul>
+    </div>
+
+
+    <div class="final-section">
+      <p class="final-text">te vagy a kedvenc emberem.</p>
+      <p class="final-subtext">boldog valentin napot, Lara.</p>
+      <div class="final-heart" id="bigHeart">♥</div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

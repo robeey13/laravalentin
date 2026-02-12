@@ -1,0 +1,687 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background: #f7f1eb;
+  color: #3d2c2c;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.6);
+  }
+  15% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) rotate(180deg) scale(1);
+  }
+}
+
+.intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: #f7f1eb;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  text-align: center;
+}
+
+.envelope {
+  width: 180px;
+  height: 130px;
+  margin: 0 auto 30px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: scale(1.04);
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: #ebe3d7;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0 3px 16px rgba(80, 50, 40, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(160, 130, 100, 0.18);
+}
+
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgba(160, 130, 100, 0.12);
+  border-radius: 2px;
+}
+
+.envelope-heart {
+  font-size: 1.8rem;
+  opacity: 0.65;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-top: 75px solid #ddd5c8;
+  z-index: 2;
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.intro-text {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #a08a7a;
+  letter-spacing: 0.3px;
+  animation: fadeInUp 1s ease 0.5s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-section {
+  position: relative;
+  z-index: 1;
+  padding: 50px 24px 80px;
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.letter-section.visible {
+  opacity: 1;
+}
+
+
+.letter-container {
+  margin: 0 auto 70px;
+}
+
+.letter {
+  background: #fff;
+  border: 1px solid rgba(160, 130, 100, 0.13);
+  border-radius: 2px;
+  padding: 46px 42px;
+  text-align: left;
+  box-shadow: 0 1px 20px rgba(80, 50, 40, 0.05);
+  animation: letterAppear 0.8s ease both;
+  animation-delay: 0.3s;
+  position: relative;
+}
+
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c9847a, #d4a088, #c9847a);
+  opacity: 0.45;
+  border-radius: 2px 2px 0 0;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #5a3d3d;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.letter-date {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  color: #b8a090;
+  margin-bottom: 5px;
+  letter-spacing: 0.4px;
+}
+
+.message p {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 13px;
+  color: #5a4545;
+}
+
+.message .highlight {
+  font-size: 1.02rem;
+  color: #7a4e4e;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.signature {
+  margin-top: 26px;
+}
+
+.signature p:first-child {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: #a08070;
+}
+
+.signature-heart {
+  font-size: 0.95rem;
+  color: #c9847a;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.things-container {
+  margin: 0 auto 70px;
+}
+
+.things-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+  color: #8b7065;
+  margin-bottom: 22px;
+}
+
+.things-list {
+  list-style: none;
+  padding: 0;
+}
+
+.things-list li {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b5555;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(160, 130, 100, 0.08);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.things-list li.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.things-list li::before {
+  content: '\2013';
+  margin-right: 10px;
+  color: #c9a898;
+}
+
+.things-list li:last-child {
+  border-bottom: none;
+  color: #7a5252;
+  font-style: italic;
+}
+
+
+.slider-container {
+  margin: 0 auto 70px;
+}
+
+.slider-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+  color: #8b7065;
+  margin-bottom: 18px;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(160, 130, 100, 0.13);
+  box-shadow: 0 1px 16px rgba(80, 50, 40, 0.05);
+  background: #fff;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85) contrast(0.95);
+  transition: filter 0.4s ease;
+}
+
+.slide:hover img {
+  filter: saturate(0.95) contrast(1);
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 26px 18px 14px;
+  background: linear-gradient(transparent, rgba(35, 22, 18, 0.6));
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: rgba(255, 245, 238, 0.75);
+  text-align: left;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(160, 130, 100, 0.15);
+  color: #6b5555;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-btn-prev {
+  left: 10px;
+}
+
+.slider-btn-next {
+  right: 10px;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(160, 130, 100, 0.18);
+  border: 1px solid rgba(160, 130, 100, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot:hover {
+  background: rgba(160, 130, 100, 0.3);
+}
+
+.slider-dot.active {
+  background: #c09080;
+  border-color: #c09080;
+  transform: scale(1.15);
+}
+
+
+.final-section {
+  text-align: center;
+  padding: 45px 20px 70px;
+  border-top: 1px solid rgba(160, 130, 100, 0.07);
+  margin-top: 10px;
+}
+
+.final-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.45rem;
+  color: #7a5c5c;
+  margin-bottom: 5px;
+}
+
+.final-subtext {
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  color: #b8a090;
+  margin-bottom: 22px;
+}
+
+.final-heart {
+  font-size: 1.2rem;
+  color: #c9847a;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.final-heart:hover {
+  transform: scale(1.12);
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1rem;
+  z-index: 9999;
+  animation: sparkleFade 1s ease forwards;
+}
+
+@keyframes sparkleFade {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+
+.secret-trigger {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 14px auto 0;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  cursor: default;
+  border-radius: 50%;
+  background: rgba(160, 130, 100, 0.05);
+  transition: all 0.6s ease;
+  user-select: none;
+  position: relative;
+}
+
+.secret-trigger:hover {
+  background: rgba(180, 120, 100, 0.18);
+  box-shadow: 0 0 8px rgba(180, 120, 100, 0.12);
+  cursor: pointer;
+  transform: scale(1.35);
+}
+
+.secret-trigger:active {
+  transform: scale(0.9);
+}
+
+
+.secret-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(55, 40, 35, 0);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.secret-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  background: rgba(55, 40, 35, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.secret-modal {
+  position: relative;
+  max-width: 440px;
+  width: 90%;
+  background: #fff;
+  border: 1px solid rgba(160, 130, 100, 0.15);
+  border-radius: 2px;
+  padding: 40px 34px 30px;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(60, 40, 30, 0.12);
+  transform: scale(0.88) translateY(16px);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.secret-overlay.active .secret-modal {
+  transform: scale(1) translateY(0);
+}
+
+.secret-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c9847a, #d4a088, #c9847a);
+  opacity: 0.45;
+}
+
+.secret-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.secret-float-heart {
+  position: absolute;
+  bottom: -20px;
+  opacity: 0;
+  animation: secretFloat 3s ease-in forwards;
+}
+
+@keyframes secretFloat {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  20% { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-400px) scale(1) rotate(12deg); }
+}
+
+.secret-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: #6b4e4e;
+  margin-bottom: 16px;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.secret-message {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #6b5555;
+  margin-bottom: 10px;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.secret-main {
+  font-size: 0.95rem;
+  color: #5a3d3d;
+  margin: 14px 0;
+  animation-delay: 0.6s;
+}
+
+.secret-small {
+  font-size: 0.88rem;
+  color: #a08a7a;
+  font-style: italic;
+  animation-delay: 0.8s;
+}
+
+.secret-close {
+  margin-top: 18px;
+  padding: 8px 24px;
+  font-family: 'Lora', serif;
+  font-size: 0.85rem;
+  color: #7a5c5c;
+  background: transparent;
+  border: 1px solid rgba(160, 130, 100, 0.22);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease 1s both;
+  letter-spacing: 0.4px;
+}
+
+.secret-close:hover {
+  background: rgba(180, 120, 100, 0.06);
+  border-color: rgba(180, 120, 100, 0.3);
+}
+
+
+@media (max-width: 600px) {
+  .letter-section {
+    padding: 28px 16px 50px;
+  }
+
+  .title {
+    font-size: 1.9rem;
+  }
+
+  .letter {
+    padding: 30px 24px;
+  }
+
+  .message p {
+    font-size: 0.93rem;
+  }
+
+  .final-text {
+    font-size: 1.2rem;
+  }
+
+  .envelope {
+    width: 150px;
+    height: 108px;
+  }
+
+  .envelope-flap {
+    border-left-width: 75px;
+    border-right-width: 75px;
+    border-top-width: 62px;
+  }
+
+  .slide img {
+    height: 230px;
+  }
+
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .slider-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .slide-caption {
+    font-size: 0.82rem;
+  }
+
+  .things-label,
+  .slider-label {
+    font-size: 1.15rem;
+  }
+}
